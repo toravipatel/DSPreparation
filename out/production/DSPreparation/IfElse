@@ -1,0 +1,19 @@
+
+class IfElse{
+
+}
+
+fun main() {
+
+    println($checkOperatorValue+"-")
+}
+
+
+
+fun checkOperatorvalue():Boolean{
+
+    val string = ""
+
+    return string?.isNullOrEmpty()?:false
+
+}
