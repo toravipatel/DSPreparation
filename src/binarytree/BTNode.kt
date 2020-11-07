@@ -1,5 +1,7 @@
 package binarytree
 
+import recursion.TreeNode
+
 class BTNode(var leftNode:BTNode?=null,var rightNode:BTNode?=null,var value:Int =0 )
 
 class BTManager{
@@ -13,18 +15,28 @@ class BTManager{
             addNode(rootNode!!,value = value)
     }
 
-    fun addNode(currentNode:BTNode, value:Int):BTNode{
-
+    fun addNode(currentNode:BTNode, value:Int){
 
 
         if(value < currentNode.value)
-            currentNode.leftNode = currentNode.leftNode?.let { addNode(it,value) }
+        {
+            if(currentNode.leftNode == null){
+                currentNode.leftNode = BTNode(value = value)
+                return
+            }
+            currentNode.leftNode?.let { addNode(it,value) }
+        }
         else if(value > currentNode.value)
-            currentNode.rightNode = currentNode.rightNode?.let { addNode(it,value) }
-        else
-            return currentNode
+        {
+            if(currentNode.rightNode == null){
+                currentNode.rightNode = BTNode(value = value)
+                return
+            }
+            currentNode.rightNode?.let { addNode(it,value) }
+        }
 
-        return currentNode
+
+
 
     }
 
@@ -42,6 +54,44 @@ class BTManager{
         }
     }
 
+    fun checkIfNodeExists(value: Int):Boolean{
+
+        if(rootNode == null){
+            return false
+        }
+
+
+        return nodeExistsUtil(rootNode!!,value)
+
+    }
+
+    fun nodeExistsUtil(rootNode: BTNode?,value: Int):Boolean{
+
+        if(rootNode == null)
+            return false
+
+        if(rootNode.value == value)
+            return true
+
+        return if(rootNode.value>value)
+            nodeExistsUtil(rootNode.leftNode,value)
+        else
+            nodeExistsUtil(rootNode.rightNode,value)
+
+        //return  false
+    }
+
+    fun rangeSumBST(node:BTNode,left:Int,right:Int):Int{
+
+        return 0
+
+
+    }
+
+    fun rangeSumBSTUtility(){
+
+    }
+
 }
 
 fun main() {
@@ -52,7 +102,9 @@ fun main() {
         binaryTReeManager.add(i)
     }
 
-    binaryTReeManager.rootNode?.let { binaryTReeManager.readBinaryTree(it) }
+    //binaryTReeManager.rootNode?.let { binaryTReeManager.readBinaryTree(it) }
+
+    println(binaryTReeManager.checkIfNodeExists(11))
 
 
 

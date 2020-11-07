@@ -231,7 +231,7 @@ fun main() {
 
 
 
-   /* graphManager.readGraph()
+    graphManager.readGraph()
 
     val visitedNodeList = LinkedHashSet<Node>()
 
@@ -239,10 +239,10 @@ fun main() {
     println("DFS traversal is")
     visitedNodeList.forEach {
         print("${it.value}")
-    }*/
+    }
 
 
-    println(graphManager.isCycle())
+    //println(graphManager.isCycle())
 
    /* println("-------------")
 

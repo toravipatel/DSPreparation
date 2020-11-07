@@ -104,6 +104,7 @@ fun main() {
 
     graphManager.addVertexConnection(1,5)
     graphManager.addVertexConnection(1,8)
+    graphManager.addVertexConnection(5,6)
     graphManager.addVertexConnection(3,9)
     graphManager.readGraphData(1)
     graphManager.readGraphData(3)
