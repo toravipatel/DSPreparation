@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/BSTOperation/BSTOperation.iml" filepath="$PROJECT_DIR$/BSTOperation/BSTOperation.iml" />
       <module fileurl="file://$PROJECT_DIR$/DSPreparation.iml" filepath="$PROJECT_DIR$/DSPreparation.iml" />
     </modules>
   </component>
