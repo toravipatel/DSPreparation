@@ -1,7 +1,6 @@
 package linkedlist
 
 fun main() {
-
         var myLinkedList = MyLinkedList()
         myLinkedList.addAtHead(10)
         myLinkedList.addAtTail(20)
@@ -9,7 +8,6 @@ fun main() {
         myLinkedList.addAtTail(50)
         myLinkedList.addAtIndex(2,30)
         myLinkedList.deleteAtIndex(2)
-
 }
 
 data class LTNode(val value:Int, var next:LTNode?)
