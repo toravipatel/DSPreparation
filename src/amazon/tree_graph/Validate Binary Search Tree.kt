@@ -8,12 +8,12 @@ import kotlin.math.max
 fun main() {
 
 }
-class BSTManager{
+
+class BSTManager {
 
     var lastVisitedValue = Int.MIN_VALUE
 
     fun isValidBST(root: BTNode?): Boolean {
-
 
 
         return true
@@ -21,36 +21,36 @@ class BSTManager{
 
     fun maxDepth(root: BTNode?): Int {
 
-        if(root == null)
+        if (root == null)
             return -1
 
         var leftDepth = maxDepth(root.leftNode) + 1
         var rightDepth = maxDepth(root.rightNode) + 1
 
 
-        return max(leftDepth,rightDepth)
+        return max(leftDepth, rightDepth)
 
     }
 
     fun isSymmetric(root: BTNode?): Boolean {
 
-        if(root == null)
+        if (root == null)
             return true
 
         val nodeQueue = LinkedList<BTNode?>()
         nodeQueue.add(root)
         nodeQueue.add(root)
 
-        while (!nodeQueue.isEmpty()){
+        while (!nodeQueue.isEmpty()) {
 
             var leftNode = nodeQueue.pop()
             var rightNode = nodeQueue.pop()
 
-            if(leftNode == null && rightNode == null)
+            if (leftNode == null && rightNode == null)
                 continue
-            if(leftNode == null || rightNode == null)
+            if (leftNode == null || rightNode == null)
                 return false
-            if(leftNode.value != rightNode.value)
+            if (leftNode.value != rightNode.value)
                 return false
 
             nodeQueue.add(leftNode.leftNode)
@@ -62,12 +62,10 @@ class BSTManager{
         return true
     }
 
-    fun isSymmetricUtil(left:BTNode?, right:BTNode?):Boolean{
-        if(left != null && right != null)
-        {
+    fun isSymmetricUtil(left: BTNode?, right: BTNode?): Boolean {
+        if (left != null && right != null) {
 
-        }
-        else
+        } else
             return left!!.value == right!!.value
 
         return true
@@ -78,23 +76,23 @@ class BSTManager{
 
         val resultList = ArrayList<ArrayList<Int>>()
 
-        if(root == null)
+        if (root == null)
             return resultList
 
         val nodeQueue = LinkedList<BTNode>()
         nodeQueue.add(root)
 
-        while (!nodeQueue.isEmpty()){
+        while (!nodeQueue.isEmpty()) {
 
             val levelList = ArrayList<Int>()
             var currentSize = nodeQueue.size
 
-            while (currentSize > 0){
+            while (currentSize > 0) {
 
                 val tempNode = nodeQueue.pop()
-                if(tempNode.leftNode != null)
+                if (tempNode.leftNode != null)
                     nodeQueue.add(tempNode.leftNode!!)
-                if(tempNode.rightNode != null)
+                if (tempNode.rightNode != null)
                     nodeQueue.add(tempNode.rightNode!!)
 
                 levelList.add(tempNode.value)
@@ -110,35 +108,33 @@ class BSTManager{
         val resultList = LinkedList<LinkedList<Int>>()
         var isLeftToRight = false
 
-        if(root == null)
+        if (root == null)
             return resultList
 
         val nodeQueue = LinkedList<BTNode>()
         nodeQueue.add(root)
 
-        while (!nodeQueue.isEmpty()){
+        while (!nodeQueue.isEmpty()) {
 
             val levelList = LinkedList<Int>()
             var currentSize = nodeQueue.size
 
-            while (currentSize > 0){
+            while (currentSize > 0) {
 
                 val tempNode = nodeQueue.pop()
-                if(isLeftToRight)
-                {
-                    if(tempNode.leftNode != null)
+                if (isLeftToRight) {
+                    if (tempNode.leftNode != null)
                         nodeQueue.addLast(tempNode.leftNode!!)
-                    if(tempNode.rightNode != null)
+                    if (tempNode.rightNode != null)
                         nodeQueue.addLast(tempNode.rightNode!!)
-                }
-                else{
-                    if(tempNode.rightNode != null)
+                } else {
+                    if (tempNode.rightNode != null)
                         nodeQueue.addLast(tempNode.rightNode!!)
-                    if(tempNode.leftNode != null)
+                    if (tempNode.leftNode != null)
                         nodeQueue.addLast(tempNode.leftNode!!)
                 }
 
-                if(isLeftToRight)
+                if (isLeftToRight)
                     levelList.addFirst(tempNode.value)
                 else
                     levelList.addLast(tempNode.value)
@@ -150,6 +146,41 @@ class BSTManager{
         return resultList
 
     }
+
+    fun getLonelyNodes(root: TreeNode?): List<Int> {
+
+        val nodeList = ArrayList<Int>()
+
+
+        if(root == null)
+            return nodeList
+        //getLonelyNodes(root!!, nodeList)
+        return nodeList
+    }
+
+    fun getLonelyNodes(root:TreeNode, nodeList:ArrayList<Int>,parent:TreeNode){
+
+        if(root == null)
+            return
+
+        if(parent != null)
+        {
+            if(parent.left == null && parent.right == null)
+                return
+
+            if(parent.left == null)
+                nodeList.add(root.`val`)
+        }
+
+        //getLonelyNodes(root.left,nodeList,root)
+        //getLonelyNodes(root.right,nodeList,root)
+    }
+
+}
+
+class TreeNode(var `val`: Int) {
+    var left: TreeNode? = null
+    var right: TreeNode? = null
 }
 
 
