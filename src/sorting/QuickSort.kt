@@ -2,9 +2,11 @@ package sorting
 
 fun main() {
 
+
+
     var number = intArrayOf(5,3,6,1,9,8)
-    //quickSort(number,0,5)
-    println(findKthLargest(number,6))
+    quickSort(number,0,5)
+    //println(findKthLargest(number,6))
     number.forEach {
         println(it)
     }
@@ -50,10 +52,10 @@ fun doPartition(nums: IntArray, low: Int, high: Int): Int {
     var end = high
 
     while (start < end) {
-        while (start <= high && nums[start] <= pivot)
+        while (start <= end && nums[start] <= pivot)
             start++
 
-        while (end >= low && nums[end] > pivot) {
+        while (end >= start && nums[end] > pivot) {
             end--
         }
 
