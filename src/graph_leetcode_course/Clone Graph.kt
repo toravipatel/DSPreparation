@@ -12,6 +12,40 @@ class Node(var `val`: Int) {
          var neighbors: ArrayList<Node?> = ArrayList<Node?>()
 }
 
+
+fun cloneGraphNewPractise(node: Node?):Node?{
+
+    if(node == null)
+        return null
+
+    var nodeQueue = LinkedList<Node>()
+    var visitedMap = HashMap<Node,Node>()
+
+
+    nodeQueue.add(node)
+    visitedMap[node] = Node(node.`val`)
+
+    while (!nodeQueue.isEmpty()){
+
+        var currentNode = nodeQueue.pop()
+
+        currentNode?.neighbors?.forEach {
+            it?.let {
+
+                if(!visitedMap.containsKey(it)){
+                    visitedMap[it] = Node(it.`val`)
+                    nodeQueue.add(it)
+                }
+
+                visitedMap.get(currentNode)?.neighbors?.add(visitedMap[it])
+            }
+        }
+    }
+
+
+    return visitedMap[node]
+}
+
 fun cloneGraph(node: Node?): Node? {
 
     if(node == null)

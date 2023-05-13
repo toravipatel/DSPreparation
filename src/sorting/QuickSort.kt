@@ -2,10 +2,9 @@ package sorting
 
 fun main() {
 
+    var number = intArrayOf(4,1,2,8,10,12,14,13,14,9)
 
-
-    var number = intArrayOf(5,3,6,1,9,8)
-    quickSort(number,0,5)
+    quickSort(number,0,number.size-1)
     //println(findKthLargest(number,6))
     number.forEach {
         println(it)

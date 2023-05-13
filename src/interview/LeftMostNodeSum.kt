@@ -18,6 +18,8 @@ class LeftMostNodeSum {
         if(node == null)
             return
 
+        node.leftNode?.let { it }
+
         calculateSum(node.leftNode!!)
         if(node.rightNode != null)
             sum = sum + node.value

@@ -46,6 +46,9 @@ fun isAllCharUnique(charMap:HashMap<Char,Int>):Boolean{
 
     var isAllUnique = true
 
+    var s = ":Tst"
+    var data = charMap.get(s[0])
+
     charMap.forEach { t, u ->
         if(u > 1)
             isAllUnique = false

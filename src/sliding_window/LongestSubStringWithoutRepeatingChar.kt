@@ -7,6 +7,8 @@ fun main() {
 
 fun isAllCharUniqueString(charMap:HashMap<Char,Int>):Boolean{
 
+    var temp:HashMap<Char,Int> = charMap.clone() as HashMap<Char, Int>
+
     var result = true
     charMap.forEach { t, u ->
 

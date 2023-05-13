@@ -2,7 +2,7 @@ package graph_leetcode_course
 
 fun main() {
 
-    val uf = UnionFindByRank()
+    val uf = UnionByRank()
     // 1-2-5-6-7 3-8-9 4
     // 1-2-5-6-7 3-8-9 4
     uf.union(1, 2)
@@ -18,6 +18,58 @@ fun main() {
     // 1-2-5-6-7 3-8-9-4
     uf.union(9, 4)
     println(uf.connected(4, 9)) // true
+
+}
+
+class UnionByRank{
+    var numsArray = IntArray(10)
+    var rankArray = IntArray(10)
+
+    init {
+        numsArray.forEachIndexed { index, value ->
+
+            numsArray[index] = index
+            rankArray[index]  = 1
+        }
+    }
+
+    fun find(x:Int):Int{
+
+        var temp = x
+
+        if(temp == numsArray[temp])
+            return temp
+
+        temp = numsArray[temp]
+        return temp
+
+
+    }
+
+    fun union(x:Int, y:Int){
+        var rootX = find(x)
+        var rootY = find(y)
+
+        println("root for $x is $rootX")
+        println("root for $y is $rootY")
+
+
+        if(rootX != rootY){
+            if(rankArray[x] > rankArray[y])
+            {
+                numsArray[x] = rootY
+            }else if(rankArray[x] < rankArray[y]){
+                numsArray[y] = rootX
+            }else{
+                numsArray[y] = rootX
+                rankArray[x] =+ 1
+            }
+        }
+    }
+
+    fun connected(x:Int, y:Int):Boolean{
+        return find(x) == find(y)
+    }
 
 }
 

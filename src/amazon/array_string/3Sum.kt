@@ -10,6 +10,7 @@ fun threeSum(nums: IntArray): List<List<Int>> {
     val resultList = ArrayList<List<Int>>()
     nums.sort()
 
+
     for (i in 0..nums.size-2){
 
         if(i ==0 || nums[i] != nums[i-1]){
